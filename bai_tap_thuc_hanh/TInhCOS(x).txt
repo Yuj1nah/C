@@ -1,0 +1,32 @@
+#include <stdio.h>
+#include <conio.h>
+#include<math.h>
+// Giai thua
+double giaithua(int n)
+{
+	if(n==0) return 1;
+	else return giaithua(n-1)*n;
+}
+// Tinh e mu x
+float cosx(float x,float err)
+{
+	float s=1;
+	int n=1;
+	while (fabs(pow(-1,n)*pow(x,n)/giaithua(2*n))>err)
+	{
+		s=s+pow(-1,n)*pow(x,n)/giaithua(2*n);
+		n++;
+	}
+	return s;
+}
+// Chuong trinh chinh
+int main()
+{
+	float x,err,s;	
+	printf("Nhap vao x="); scanf("%f",&x);
+	printf("Nhap vao sai so err ="); scanf("%d",&err);
+	s=cosx(x,err);
+	printf("Gia tri cos x=%0.3f",s);
+	getch();
+}
+	
